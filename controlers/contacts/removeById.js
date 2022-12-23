@@ -1,11 +1,12 @@
 const { Contact } = require("../../models");
+const { HttpError } = require("../../middlewares");
 
 const removeById = async (req, res) => {
   const { contactId } = req.params;
   const result = await Contact.findByIdAndRemove(contactId);
 
   if (!result) {
-    throw new Error(`Contact with id ${contactId} not found`);
+    throw new HttpError(404, `Contact with id ${contactId} not found`);
   }
   res.json({
     status: "success",

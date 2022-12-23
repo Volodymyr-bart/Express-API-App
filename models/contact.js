@@ -32,10 +32,6 @@ const favoriteJoiSchema = Joi.object({
   favorite: Joi.bool().required(),
 });
 
-// const schemas = {
-//   joiSchema,
-// };
-
 const Contact = model("contact", contactSchema);
 
 module.exports = { Contact, joiSchema, favoriteJoiSchema };

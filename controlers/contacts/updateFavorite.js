@@ -1,12 +1,16 @@
 const { Contact } = require("../../models");
+const { HttpError } = require("../../middlewares");
 
 const updateFavorite = async (req, res) => {
   const { contactId } = req.params;
   const { favorite } = req.body;
+  if (!favorite) {
+    throw new HttpError(400, `Missing field favorite`);
+  }
   const result = await Contact.findByIdAndUpdate(contactId, { favorite }, { new: true });
 
   if (!result) {
-    throw new Error(`Contact with id ${contactId} not found`);
+    throw new HttpError(404, `Contact with id ${contactId} not found`);
   }
   res.json({
     status: "success",
