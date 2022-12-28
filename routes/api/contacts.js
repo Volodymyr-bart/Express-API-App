@@ -3,7 +3,6 @@ const { ctrlWrapper, validation } = require("../../middlewares");
 const { contacts: ctrl } = require("../../controlers");
 
 const router = express.Router();
-// const { BadRequest, NotFound, InternalServerError } = require("http-errors");
 
 const { joiSchema, favoriteJoiSchema } = require("../../models/contact");
 
