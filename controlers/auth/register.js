@@ -1,5 +1,6 @@
 const { HttpError } = require("../../middlewares");
 const { User } = require("../../models");
+const bcrypt = require("bcrypt");
 
 const register = async (req, res) => {
   const { email, password, subscription } = req.body;
@@ -7,7 +8,8 @@ const register = async (req, res) => {
   if (user) {
     throw new HttpError(409, `Email ${email} in use`);
   }
-  const result = await User.create({ email, password, subscription });
+  const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+  const result = await User.create({ email, password: hashPassword, subscription });
   res.status(201).json({
     status: "sucsess",
     code: 201,
