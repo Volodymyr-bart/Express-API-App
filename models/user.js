@@ -25,13 +25,13 @@ const userSchema = Schema(
   { versionKey: false, timestamps: true }
 );
 const joiRegisterSchema = Joi.object({
-  email: Joi.string.required(),
+  email: Joi.string().required(),
   password: Joi.string().required(),
   subscription: Joi.string(),
 });
 
 const joiLoginSchema = Joi.object({
-  email: Joi.string.required(),
+  email: Joi.string().required(),
   password: Joi.string().required(),
 });
 
