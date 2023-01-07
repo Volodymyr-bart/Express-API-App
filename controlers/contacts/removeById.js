@@ -3,7 +3,7 @@ const { HttpError } = require("../../middlewares");
 
 const removeById = async (req, res) => {
   const { contactId } = req.params;
-  const result = await Contact.findByIdAndRemove(contactId);
+  const result = await Contact.Contact.findByIdAndRemove(contactId);
 
   if (!result) {
     throw new HttpError(404, `Contact with id ${contactId} not found`);
