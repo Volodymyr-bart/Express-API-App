@@ -2,7 +2,7 @@ const { HttpError, sendEmail } = require("../../middlewares");
 const { User } = require("../../models");
 const bcrypt = require("bcrypt");
 const gravatar = require("gravatar");
-const { nanoid } = require("nanoid");
+const { v4: uuidv4 } = require("uuid");
 
 const { BASE_URL } = process.env;
 
@@ -14,7 +14,7 @@ const register = async (req, res) => {
   }
   const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   const avatarURL = gravatar.url(email);
-  const verificationCode = nanoid();
+  const verificationCode = uuidv4();
   const verifyEmail = {
     to: email,
     subject: "Verify email",

@@ -46,6 +46,10 @@ const joiLoginSchema = Joi.object({
   password: Joi.string().required(),
 });
 
+const reVerify = Joi.object({
+  email: Joi.string(),
+});
+
 const User = model("user", userSchema);
 
-module.exports = { User, joiRegisterSchema, joiLoginSchema };
+module.exports = { User, joiRegisterSchema, joiLoginSchema, reVerify };
