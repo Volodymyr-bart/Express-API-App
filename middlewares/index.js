@@ -3,6 +3,7 @@ const validation = require("./validation");
 const HttpError = require("./HttpError");
 const auth = require("./auth");
 const upload = require("./upload");
+const sendEmail = require("./sendEmail");
 
 module.exports = {
   ctrlWrapper,
@@ -10,4 +11,5 @@ module.exports = {
   HttpError,
   auth,
   upload,
+  sendEmail,
 };
